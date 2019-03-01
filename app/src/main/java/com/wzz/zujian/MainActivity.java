@@ -1,9 +1,10 @@
 package com.wzz.zujian;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.wzz.commonlib.EventUtils;
 import com.wzz.commonlib.ServiceManager;
 
 /**
@@ -20,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServiceManager.getInstance().getILoginService().launch(MainActivity.this,"");
+
+                /** 两种方式跳转：都是用反射 通过全类名找到类，调用方法 */
+//                ServiceManager.getInstance().getILoginService().launch(MainActivity.this,"");
+
+                EventUtils.open(MainActivity.this,"com.wzz.logincomponent.LoginActivity" );
             }
         });
 

@@ -5,8 +5,9 @@ if(loginRunAlone.toBoolean()){
 }
 
 android {
-    compileSdkVersion compile_sdk_version.toInteger()
-    buildToolsVersion "28.0.3"
+
+    compileSdkVersion rootProject.ext.compileSdkVersion  // compileSdkVersion compile_sdk_version.toInteger()
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
 
@@ -14,10 +15,10 @@ android {
             applicationId "com.dn.logincomponent"
         }
 
-        minSdkVersion min_sdk_version.toInteger()
-        targetSdkVersion target_sdk_version.toInteger()
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -49,5 +50,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     testCompile 'junit:junit:4.12'
-    compile project(':commonlib')
+    compile project(':commonlib') // 引用公共库
 }
