@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.wzz.commonlib.EventUtils;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.wzz.commonlib.ServiceManager;
 
 /**
@@ -22,10 +22,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /** 两种方式跳转：都是用反射 通过全类名找到类，调用方法 */
+                /** 三种方式跳转：1、2 都是用反射 通过全类名找到类，调用方法 */
 //                ServiceManager.getInstance().getILoginService().launch(MainActivity.this,"");
 
-                EventUtils.open(MainActivity.this,"com.wzz.logincomponent.LoginActivity" );
+//                EventUtils.open(MainActivity.this,"com.wzz.logincomponent.LoginActivity" );
+
+                /** 利用ARouter进行跳转 */
+                ARouter.getInstance().build("/login/LoginActivity").navigation();
+
             }
         });
 

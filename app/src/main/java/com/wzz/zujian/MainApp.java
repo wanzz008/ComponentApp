@@ -3,6 +3,7 @@ package com.wzz.zujian;
 import android.app.Application;
 import android.util.Log;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.wzz.commonlib.AppConfig;
 import com.wzz.commonlib.IAppComponent;
 
@@ -30,6 +31,16 @@ public class MainApp extends Application  implements IAppComponent{
     public void initialize(Application app) {
 
         Log.d("wzz----" , "MainApp initialize...") ;
+
+        //         原文：https://blog.csdn.net/guiying712/article/details/55213884
+
+        if (BuildConfig.DEBUG) {
+            //一定要在ARouter.init之前调用openDebug
+            ARouter.openDebug();
+            ARouter.openLog();
+        }
+        ARouter.init(this);
+
 
         application = app ;
 

@@ -20,6 +20,13 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        // 使用阿里路由需在组件Module下配置两步 1：
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+
     }
 
     sourceSets {
@@ -50,4 +57,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     testCompile 'junit:junit:4.12'
     compile project(':commonlib') // 引用公共库
+
+    // 使用阿里路由需在组件Module下配置两步 2：
+    annotationProcessor 'com.alibaba:arouter-compiler:1.0.3'
 }

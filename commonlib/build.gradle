@@ -55,4 +55,7 @@ dependencies {
 //
 //    //router
 //    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
+
+    //阿里rouer
+    compile "com.alibaba:arouter-api:$rootProject.Alibaba_routerVersion"
 }
