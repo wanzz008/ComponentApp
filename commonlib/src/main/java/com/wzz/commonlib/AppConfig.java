@@ -8,4 +8,12 @@ public class AppConfig {
         "com.wzz.minecomponent.MineApp"
     };
 
+    /**
+     * Activity的全类名
+     */
+    public static final String[] COMPONENTS2 = {
+            "com.wzz.logincomponent.LoginActivity",
+            "com.wzz.minecomponent.MineActivity"
+    };
+
 }
