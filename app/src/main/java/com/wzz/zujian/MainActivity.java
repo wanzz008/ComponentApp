@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wzz.commonlib.ServiceManager;
 
@@ -15,7 +16,10 @@ import com.wzz.commonlib.ServiceManager;
  * 组件化参考：
  * https://blog.csdn.net/ican87/article/details/86612733
  */
+
+@Route(path = "/main/main")
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +50,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.showUI).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                ServiceManager.getInstance().getILoginService().newUserInfoFragment(
-                        getSupportFragmentManager(),
-                        R.id.container,bundle);
-            }
-        });
+//        findViewById(R.id.showUI).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Bundle bundle = new Bundle();
+//                ServiceManager.getInstance().getILoginService().newUserInfoFragment(
+//                        getSupportFragmentManager(),
+//                        R.id.container,bundle);
+//            }
+//        });
 
     }
 }

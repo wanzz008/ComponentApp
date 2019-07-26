@@ -1,1 +1,1 @@
-include ':app', ':logincomponent', ':minecomponent', ':commonlib'
+include ':app', ':logincomponent', ':minecomponent', ':commonlib', ':dn_annotation_lib', ':dn_compiler_lib'

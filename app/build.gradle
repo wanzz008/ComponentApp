@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.wzz.zujian"
@@ -30,23 +30,19 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:26.+'
-    testCompile 'junit:junit:4.12'
 
-    compile project(':commonlib') //引用公共库
+    implementation project(':commonlib') //引用公共库
 
     if(!loginRunAlone.toBoolean()){
-        compile project(':logincomponent')
+        implementation project(':logincomponent')
     }
     if(!mineRunAlone.toBoolean()){
-        compile project(':minecomponent')
+        implementation project(':minecomponent')
     }
 
     // 使用阿里路由需在组件Module下配置两步 2：
     annotationProcessor 'com.alibaba:arouter-compiler:1.0.3'
+
+    annotationProcessor project(':dn_compiler_lib')// 使用自定义注解处理器
 
 }

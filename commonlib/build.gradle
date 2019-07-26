@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion  // compileSdkVersion compile_sdk_version.toInteger()
-    buildToolsVersion rootProject.ext.buildToolsVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
 
@@ -23,39 +23,68 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    testCompile 'junit:junit:4.12'
 
-//    testCompile "junit:junit:$rootProject.junitVersion"
+    // 在要导入的包后面添加 " { exclude group: 'com.android.support') "，group:表示只要包含com.android.support的都除去。
 
+    //    api ("com.android.support:appcompat-v7:$rootProject.supportLibraryVersion") {
+
+    //        exclude group: 'com.android.support'
+
+    //    }
+
+    api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    testImplementation 'junit:junit:4.12'
+
+    //    testCompile "junit:junit:$rootProject.junitVersion"
 
     // 以下配置如果需要可打开  原文：https://blog.csdn.net/guiying712/article/details/55213884  或者看此篇配置https://www.jianshu.com/p/a092bcc3de7d
 
     //Android Support
-//    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-//    compile "com.android.support:design:$rootProject.supportLibraryVersion"
-//    compile "com.android.support:percent:$rootProject.supportLibraryVersion"
-//    //网络请求相关
-//    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-//    compile "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
-//    compile "com.github.franmontiel:PersistentCookieJar:$rootProject.cookieVersion"
-//    //稳定的
-//    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-//    compile "com.orhanobut:logger:$rootProject.loggerVersion"
-//    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
-//    compile "com.google.code.gson:gson:$rootProject.gsonVersion"
-//    compile "com.github.chrisbanes:PhotoView:$rootProject.photoViewVersion"
-//
-//    compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
-//    compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
-//
-//    //router
-//    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
 
-    //阿里rouer
-    compile "com.alibaba:arouter-api:$rootProject.Alibaba_routerVersion"
+    //    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+
+    //    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+
+    //    compile "com.android.support:percent:$rootProject.supportLibraryVersion"
+
+    //    //网络请求相关
+
+    //    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+
+    //    compile "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
+
+    //    compile "com.github.franmontiel:PersistentCookieJar:$rootProject.cookieVersion"
+
+    //    //稳定的
+
+    //    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+    //    compile "com.orhanobut:logger:$rootProject.loggerVersion"
+
+    //    compile "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+
+    //    compile "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    //    compile "com.github.chrisbanes:PhotoView:$rootProject.photoViewVersion"
+
+    //
+
+    //    compile "com.jude:easyrecyclerview:$rootProject.easyRecyclerVersion"
+
+    //    compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
+
+    //
+
+    //    //router
+
+    //    compile "com.github.mzule.activityrouter:activityrouter:$rootProject.routerVersion"
+
+    //阿里router
+    api "com.alibaba:arouter-api:$rootProject.Alibaba_routerVersion"
+
+    api project(':dn_annotation_lib')
 }

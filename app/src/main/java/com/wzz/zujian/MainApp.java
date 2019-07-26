@@ -6,6 +6,7 @@ import android.util.Log;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wzz.commonlib.AppConfig;
 import com.wzz.commonlib.IAppComponent;
+import com.wzz.commonlib.dn_router.DnRouter;
 
 public class MainApp extends Application  implements IAppComponent{
 
@@ -18,6 +19,8 @@ public class MainApp extends Application  implements IAppComponent{
     @Override
     public void onCreate() {
         super.onCreate();
+
+        DnRouter.init( this );
 
         initialize(this);
 
@@ -32,7 +35,7 @@ public class MainApp extends Application  implements IAppComponent{
 
         Log.d("wzz----" , "MainApp initialize...") ;
 
-        //         原文：https://blog.csdn.net/guiying712/article/details/55213884
+        // 原文：https://blog.csdn.net/guiying712/article/details/55213884
 
         if (BuildConfig.DEBUG) {
             //一定要在ARouter.init之前调用openDebug
